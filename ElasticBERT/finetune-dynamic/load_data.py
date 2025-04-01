@@ -115,13 +115,13 @@ def load_and_cache_examples_elue(args, task, tokenizer, data_type="train"):
         if args.spec_eval and task!='sst-2':
           label_list = processor.get_labels(args)
         else:
-          label_list = processor.get_labels()
+          label_list = processor.get_labels(args)
 
         if data_type == "train":
           if args.spec_eval:
             examples = processor.get_train_examples(args.data_dir, args)
           else:
-            examples = processor.get_train_examples(args.data_dir)   
+            examples = processor.get_train_examples(args.data_dir, args)   
         elif data_type == "dev":
             examples = processor.get_dev_examples(args.data_dir)
         elif data_type == "test":
